@@ -34,3 +34,52 @@ EXPLAIN
 SIMULATE
   ↓
 RESPOND
+
+### What you should do now
+
+**Don't edit this section line by line.** Replace your entire `README.md` with the complete version I gave you in the previous message, but **without any `[svg](...)` lines**.
+
+The final README should continue after this section with:
+
+```text
+Problem Statement
+        ↓
+16-Layer Architecture
+        ↓
+Multi-Source Ingestion
+        ↓
+Data Quality
+        ↓
+Normalization
+        ↓
+Civic Digital Twin
+        ↓
+AI/ML Detection
+        ↓
+Temporal Reasoning
+        ↓
+Cross-Signal Fusion
+        ↓
+Event Intelligence
+        ↓
+Risk Engine
+        ↓
+Agentic AI
+        ↓
+Grounded GenAI
+        ↓
+Simulation
+        ↓
+Time Machine
+        ↓
+Civic Command Center
+        ↓
+Features
+        ↓
+Tech Stack
+        ↓
+Project Structure
+        ↓
+Run Instructions
+        ↓
+Team
