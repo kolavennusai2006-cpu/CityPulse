@@ -1,0 +1,23 @@
+# Node dependencies
+Backend/node_modules/
+
+# Python cache
+Python_Engine/__pycache__/
+
+# Python bytecode
+*.pyc
+*.pyo
+
+# ZIP / temporary generated files
+*.zip
+
+# Environment variables / secrets
+.env
+*.env
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

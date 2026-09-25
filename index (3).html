@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CityPulse — Civic Intelligence OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style (2).css">
+</head>
+<body>
+<div id="flash-alert" class="flash-alert"></div>
+<div class="wrap">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">CP</div><div class="brand-text"><h1>CityPulse</h1><p id="tagline">Civic intelligence OS — one glance, grounded in evidence</p></div></div>
+  <div class="topbar-right">
+    <select id="city-picker" aria-label="Select city"></select>
+    <div class="seg" id="time-seg">
+      <button data-off="-2">−30m</button><button data-off="-1">−15m</button><button class="on" data-off="0">Now</button>
+    </div>
+    <button class="pill-btn" id="lang-toggle">हिन्दी</button>
+    <button class="pill-btn" id="notify-toggle">🔔 Enable alerts</button>
+    <div class="status-chip"><span class="dot"></span><span>Feeds nominal</span></div>
+  </div>
+</header>
+
+<div class="snapshot-banner" id="snap-banner">⏱ Viewing a past snapshot — live auto-refresh is paused. Click "Now" to resume.</div>
+
+<section class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="eyebrow">CURRENT READING</div>
+      <div class="hero-city" id="hero-city">—</div>
+      <div class="status-word" id="hero-status">—</div>
+      <p class="hero-sub" id="hero-sub"></p>
+    </div>
+    <div class="hero-meta">
+      <div><div class="label">TIME</div><div class="value" id="hero-time">—</div></div>
+      <div><div class="label">ZONES MONITORED</div><div class="value" id="hero-zonecount">—</div></div>
+      <div><div class="label">ACTIVE FLAGS</div><div class="value" id="hero-flags">—</div></div>
+    </div>
+  </div>
+  <div class="hero-score-row" id="hero-mini"></div>
+</section>
+
+<section class="section"><div class="priority" id="priority-box"></div></section>
+
+<section class="section">
+  <div class="section-head"><h2>🚫 Avoid right now</h2><div class="hint">Zones, roads and incidents to steer clear of this minute</div></div>
+  <div class="avoid-grid" id="avoid-grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Today's advisory</h2><div class="hint">Personalized tips from live weather + road-risk signals</div></div>
+  <div class="card" id="advisory-card"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>🌐 India hazard watch</h2><div class="hint">Simulated IMD / NDMA-style bulletins — wire a real feed in backend/server.js</div></div>
+  <div class="news-grid" id="news-grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Plan your route</h2><div class="hint">Flags rain-related accident risk and road closures, suggests the shortest safe alternate</div></div>
+  <div class="card">
+    <div class="route-row">
+      <select id="route-from"></select>
+      <span class="route-to-label">→ to</span>
+      <select id="route-to"></select>
+      <button class="sim-btn" id="route-find">Find safest route</button>
+    </div>
+    <div class="route-result" id="route-result"><span class="tag">SELECT ORIGIN AND DESTINATION</span><br>Pick two zones to check for closures and get the shortest safe route between them.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Choose your view</h2><div class="hint">The brief changes based on who's looking</div></div>
+  <div class="role-tabs" id="role-tabs">
+    <button class="role-tab on" data-role="resident">🏠 Resident</button>
+    <button class="role-tab" data-role="business">🏪 Business Owner</button>
+    <button class="role-tab" data-role="official">🏛 City Official</button>
+    <button class="role-tab" data-role="emergency">🚨 Emergency Response</button>
+    <button class="role-tab" data-role="journalist">📰 Journalist</button>
+  </div>
+  <div class="card role-card" id="role-card"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Is it safe right now?</h2><div class="hint">Quick citizen check — pick a zone, get a plain verdict</div></div>
+  <div class="card safe-card">
+    <div class="safe-row">
+      <select id="safe-zone-picker"></select>
+      <button class="sim-btn" id="safe-check-btn">Check zone</button>
+      <button class="pill-btn" id="listen-btn">🔊 Listen</button>
+    </div>
+    <div class="safe-verdict" id="safe-verdict"><span class="tag">SELECT A ZONE</span><br>Pick a zone above to get a plain-language safety read.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>📢 Report something</h2><div class="hint">Citizen reports get corroborated when neighbours confirm them too</div></div>
+  <div class="card">
+    <div class="report-form" id="report-form">
+      <select id="report-type">
+        <option value="waterlogging">💧 Waterlogging</option>
+        <option value="road_damage">🚧 Road damage</option>
+        <option value="accident">🚗 Accident / traffic incident</option>
+        <option value="power">⚡ Power outage</option>
+        <option value="gas_leak">🔥 Gas leak / smell</option>
+        <option value="transit">🚌 Transit problem</option>
+        <option value="signal">🚦 Traffic light not working</option>
+        <option value="tree">🌳 Fallen tree</option>
+        <option value="gathering">📢 Public gathering / protest</option>
+        <option value="garbage">🗑️ Garbage</option>
+        <option value="streetlight">💡 Streetlight problem</option>
+        <option value="other">Other</option>
+      </select>
+      <select id="report-zone"></select>
+      <input id="report-desc" placeholder="Briefly describe what you're seeing (optional)">
+      <label class="photo-label" for="report-photo">📷 <span id="photo-name">Add photo (optional)</span></label>
+      <input type="file" id="report-photo" accept="image/*" hidden>
+      <button class="sim-btn" id="report-submit">Submit report</button>
+    </div>
+    <div id="report-photo-preview"></div>
+    <div class="report-list" id="report-list"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Event graph — signal fusion</h2><div class="hint">How today's top zone's signals are converging</div></div>
+  <div class="card"><div class="graph-row" id="event-graph"></div><div class="conv-box" id="conv-box"></div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>🗺️ Live incident map</h2><div class="hint">Click a zone or marker for details · use the zoom controls to look closer</div></div>
+  <div class="card map-card">
+    <div class="map-zoom-controls">
+      <button class="pill-btn" id="map-zoom-in">＋ Zoom in</button>
+      <button class="pill-btn" id="map-zoom-out">－ Zoom out</button>
+      <button class="pill-btn" id="map-zoom-reset">⟲ Reset</button>
+      <div class="map-legend" id="map-legend"></div>
+    </div>
+    <div class="map-svg-wrap" id="map-svg-wrap"></div>
+    <div class="map-info" id="map-info"><span class="tag">TAP A ZONE OR MARKER</span><br>Select any point on the map to see what's happening there.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Zone-by-zone risk</h2><div style="display:flex;align-items:center;gap:12px;"><div class="hint">6-reading trend + 15-min forecast per zone</div><button class="pill-btn" id="csv-export">⬇ Export CSV</button></div></div>
+  <div class="zone-grid" id="zone-grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>📈 Historical risk profile</h2><div class="hint">Sample reference dataset — swap in real NDMA / data.gov.in archives for production</div></div>
+  <div class="card">
+    <div class="hist-grid" id="hist-grid"></div>
+    <div class="hist-yearly" id="hist-yearly"></div>
+    <div class="hist-replay-head"><h3>⏪ Historical event replay</h3><button class="pill-btn" id="replay-btn">▶ Replay</button></div>
+    <div class="hist-timeline" id="hist-timeline"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>What changed today</h2><div class="hint">City-wide signal movement</div></div>
+  <div class="signals-grid" id="signals-grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Ask CityPulse</h2><div class="hint">Answers are computed live from the current feed state, not guessed</div></div>
+  <div class="card">
+    <div class="ai-box"><input id="ai-input" placeholder="e.g. Why is Zone A flagged? Compare zones. What's happening now?"><button id="ai-ask">Investigate</button></div>
+    <div class="chips">
+      <button class="chip" data-q="What's happening right now?">What's happening now?</button>
+      <button class="chip" data-q="Why is the top zone flagged?">Why is it flagged?</button>
+      <button class="chip" data-q="Compare the two riskiest zones">Compare zones</button>
+    </div>
+    <div class="ai-answer" id="ai-answer"><span class="tag">GROUNDED ON LIVE FEED DATA</span><br>Ask a question above, or tap a suggestion.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Civic brief</h2><div class="hint">Plain-language summary with cited evidence</div></div>
+  <div class="card">
+    <p class="brief-lede" id="brief-text"></p>
+    <button class="pill-btn" id="copy-brief">📋 Copy citable press brief</button>
+    <div class="brief-note"><span>ⓘ</span><span>Correlations shown are possible links based on signals in the same window — not confirmed causes.</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>What-if simulation</h2><div class="hint">Adjust the top zone's signals and recompute risk instantly</div></div>
+  <div class="card">
+    <div class="sim-grid" id="sim-grid"></div>
+    <button class="sim-btn" id="sim-run">Recompute risk</button>
+    <div class="sim-result">
+      <div class="result-card"><span>SIMULATED RISK</span><strong id="sim-risk">—</strong></div>
+      <div class="result-card"><span>SIMULATED STATUS</span><strong id="sim-status">—</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>🔌 Data source status</h2><div class="hint">Feeds degrade gracefully — a stalled source falls back to last-known data</div></div>
+  <div class="source-status" id="source-status"></div>
+</section>
+
+<div class="foot"><span>CityPulse · simulated public + open civic data for demo purposes</span><span id="foot-refresh">Auto-refreshing every 8s</span></div>
+</div>
+
+<script src="script (2).js"></script>
+</body>
+</html>

@@ -1,0 +1,1498 @@
+[
+    {
+        "zone_id": "ZONE_A",
+        "status": "CRITICAL",
+        "risk_score": 100,
+        "anomaly": true,
+        "signals_detected": [
+            "HEAVY_RAIN",
+            "TRAFFIC_SPIKE",
+            "TRANSIT_DELAY",
+            "COMPLAINT_SPIKE"
+        ],
+        "why_flagged": {
+            "reason": "Multiple civic signals changed significantly within the same time window.",
+            "evidence": [
+                {
+                    "signal": "Rainfall",
+                    "change_percent": 825
+                },
+                {
+                    "signal": "Traffic",
+                    "change_percent": 134
+                },
+                {
+                    "signal": "Transit Delay",
+                    "change_percent": 380
+                },
+                {
+                    "signal": "Complaints",
+                    "change_percent": 280
+                }
+            ],
+            "time_window_minutes": 15,
+            "interpretation": "These signals show a possible relationship. This does not confirm causation."
+        },
+        "ml": {
+            "ml_anomaly": true,
+            "ml_score": -0.1569
+        },
+        "statistical": {
+            "rainfall": {
+                "z_score": 1.38,
+                "statistical_anomaly": false
+            },
+            "traffic": {
+                "z_score": 1.53,
+                "statistical_anomaly": false
+            },
+            "transit": {
+                "z_score": 1.72,
+                "statistical_anomaly": false
+            },
+            "complaints": {
+                "z_score": 1.42,
+                "statistical_anomaly": false
+            }
+        },
+        "ensemble": {
+            "rule_anomaly": true,
+            "statistical_anomaly": false,
+            "ml_anomaly": true,
+            "detectors_agreeing": 2,
+            "ensemble_anomaly": true,
+            "confidence": "MEDIUM"
+        },
+        "early_warning": {
+            "early_warning": true,
+            "signals_showing_change": [
+                "rainfall_mm",
+                "transit_delay_minutes"
+            ],
+            "signals_count": 2,
+            "warning_level": "MEDIUM",
+            "reason": "Multiple civic signals are showing a sustained upward trend.",
+            "trends": {
+                "rainfall_mm": {
+                    "recent_values": [
+                        14.0,
+                        20.0,
+                        23.0,
+                        15.0
+                    ],
+                    "recent_changes": [
+                        42.86,
+                        15.0,
+                        -34.78
+                    ],
+                    "average_change": 7.69
+                },
+                "traffic_percent": {
+                    "recent_values": [
+                        67,
+                        83,
+                        91,
+                        70
+                    ],
+                    "recent_changes": [
+                        23.88,
+                        9.64,
+                        -23.08
+                    ],
+                    "average_change": 3.48
+                },
+                "transit_delay_minutes": {
+                    "recent_values": [
+                        17,
+                        23,
+                        26,
+                        18
+                    ],
+                    "recent_changes": [
+                        35.29,
+                        13.04,
+                        -30.77
+                    ],
+                    "average_change": 5.85
+                },
+                "complaints_count": {
+                    "recent_values": [
+                        30,
+                        40,
+                        45,
+                        30
+                    ],
+                    "recent_changes": [
+                        33.33,
+                        12.5,
+                        -33.33
+                    ],
+                    "average_change": 4.17
+                }
+            }
+        },
+        "change_point": {
+            "change_detected": true,
+            "change_point": {
+                "snapshot_index": 5,
+                "time_offset_minutes": 25,
+                "signals_changed": [
+                    "rainfall_mm",
+                    "traffic_percent",
+                    "transit_delay_minutes",
+                    "complaints_count"
+                ],
+                "changes": {
+                    "rainfall_mm": 150.0,
+                    "traffic_percent": 22.86,
+                    "transit_delay_minutes": 60.0,
+                    "complaints_count": 50.0
+                },
+                "signals_changed_count": 4
+            },
+            "all_change_points": [
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "traffic_percent",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 150.0,
+                        "traffic_percent": 22.86,
+                        "transit_delay_minutes": 60.0,
+                        "complaints_count": 50.0
+                    },
+                    "signals_changed_count": 4
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "traffic_percent",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 60.0,
+                        "traffic_percent": 18.6,
+                        "transit_delay_minutes": 37.5,
+                        "complaints_count": 33.33
+                    },
+                    "signals_changed_count": 4
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "traffic_percent",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 37.5,
+                        "traffic_percent": 15.69,
+                        "transit_delay_minutes": 27.27,
+                        "complaints_count": 25.0
+                    },
+                    "signals_changed_count": 4
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "traffic_percent",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 27.27,
+                        "traffic_percent": 13.56,
+                        "transit_delay_minutes": 21.43,
+                        "complaints_count": 20.0
+                    },
+                    "signals_changed_count": 4
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "traffic_percent",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 42.86,
+                        "traffic_percent": 23.88,
+                        "transit_delay_minutes": 35.29,
+                        "complaints_count": 33.33
+                    },
+                    "signals_changed_count": 4
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "signals_changed": [
+                        "rainfall_mm",
+                        "transit_delay_minutes",
+                        "complaints_count"
+                    ],
+                    "changes": {
+                        "rainfall_mm": 15.0,
+                        "traffic_percent": 9.64,
+                        "transit_delay_minutes": 13.04,
+                        "complaints_count": 12.5
+                    },
+                    "signals_changed_count": 3
+                }
+            ]
+        },
+        "temporal": {
+            "state": "PERSISTENT",
+            "persistence_score": 4,
+            "acceleration_score": 0,
+            "convergence_score": 4
+        },
+        "event": {
+            "event_detected": true,
+            "zone_id": "ZONE_A",
+            "event_start": {
+                "snapshot_index": 5,
+                "time_offset_minutes": 25
+            },
+            "event_end": {
+                "snapshot_index": 11,
+                "time_offset_minutes": 55
+            },
+            "duration_minutes": 30,
+            "temporal_state": "PERSISTENT",
+            "timeline": [
+                {
+                    "snapshot_index": 0,
+                    "time_offset_minutes": 0,
+                    "evidence": {
+                        "rainfall_mm": 2.0,
+                        "traffic_percent": 35,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 1,
+                    "time_offset_minutes": 5,
+                    "evidence": {
+                        "rainfall_mm": 2.0,
+                        "traffic_percent": 35,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 2,
+                    "time_offset_minutes": 10,
+                    "evidence": {
+                        "rainfall_mm": 2.0,
+                        "traffic_percent": 35,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 3,
+                    "time_offset_minutes": 15,
+                    "evidence": {
+                        "rainfall_mm": 2.0,
+                        "traffic_percent": 35,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 4,
+                    "time_offset_minutes": 20,
+                    "evidence": {
+                        "rainfall_mm": 2.0,
+                        "traffic_percent": 35,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 43,
+                        "transit_delay_minutes": 8,
+                        "complaints_count": 15
+                    }
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "evidence": {
+                        "rainfall_mm": 8.0,
+                        "traffic_percent": 51,
+                        "transit_delay_minutes": 11,
+                        "complaints_count": 20
+                    }
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "evidence": {
+                        "rainfall_mm": 11.0,
+                        "traffic_percent": 59,
+                        "transit_delay_minutes": 14,
+                        "complaints_count": 25
+                    }
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "evidence": {
+                        "rainfall_mm": 14.0,
+                        "traffic_percent": 67,
+                        "transit_delay_minutes": 17,
+                        "complaints_count": 30
+                    }
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "evidence": {
+                        "rainfall_mm": 20.0,
+                        "traffic_percent": 83,
+                        "transit_delay_minutes": 23,
+                        "complaints_count": 40
+                    }
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "evidence": {
+                        "rainfall_mm": 23.0,
+                        "traffic_percent": 91,
+                        "transit_delay_minutes": 26,
+                        "complaints_count": 45
+                    }
+                },
+                {
+                    "snapshot_index": 11,
+                    "time_offset_minutes": 55,
+                    "evidence": {
+                        "rainfall_mm": 15.0,
+                        "traffic_percent": 70,
+                        "transit_delay_minutes": 18,
+                        "complaints_count": 30
+                    }
+                }
+            ],
+            "evidence": {
+                "rainfall_mm": 5.0,
+                "traffic_percent": 43,
+                "transit_delay_minutes": 8,
+                "complaints_count": 15
+            }
+        },
+        "recovery": {
+            "recovery_detected": true,
+            "signals_recovering": [
+                "rainfall_mm",
+                "traffic_percent",
+                "transit_delay_minutes",
+                "complaints_count"
+            ],
+            "signals_count": 4,
+            "recovery_level": "HIGH",
+            "reason": "Multiple civic signals are showing signs of recovery.",
+            "recovery_changes": {
+                "rainfall_mm": 34.78,
+                "traffic_percent": 23.08,
+                "transit_delay_minutes": 30.77,
+                "complaints_count": 33.33
+            }
+        },
+        "event_lifecycle": {
+            "lifecycle_stage": "RECOVERY",
+            "event_active": true,
+            "recovery_active": true,
+            "reason": "Multiple civic signals are decreasing after the detected disruption."
+        }
+    },
+    {
+        "zone_id": "ZONE_B",
+        "status": "NORMAL",
+        "risk_score": 0,
+        "anomaly": false,
+        "signals_detected": [],
+        "why_flagged": {
+            "reason": "No significant civic disruption detected.",
+            "evidence": [],
+            "time_window_minutes": 15,
+            "interpretation": "Current signals are within normal range."
+        },
+        "ml": {
+            "ml_anomaly": false,
+            "ml_score": 0.0792
+        },
+        "statistical": {
+            "rainfall": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "traffic": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "transit": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "complaints": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            }
+        },
+        "ensemble": {
+            "rule_anomaly": false,
+            "statistical_anomaly": false,
+            "ml_anomaly": false,
+            "detectors_agreeing": 0,
+            "ensemble_anomaly": false,
+            "confidence": "LOW"
+        },
+        "early_warning": {
+            "early_warning": false,
+            "signals_showing_change": [],
+            "signals_count": 0,
+            "warning_level": "NONE",
+            "reason": "No sufficient multi-signal deterioration detected.",
+            "trends": {
+                "rainfall_mm": {
+                    "recent_values": [
+                        4.0,
+                        4.0,
+                        4.0,
+                        4.0
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "traffic_percent": {
+                    "recent_values": [
+                        40,
+                        40,
+                        40,
+                        40
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "transit_delay_minutes": {
+                    "recent_values": [
+                        6,
+                        6,
+                        6,
+                        6
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "complaints_count": {
+                    "recent_values": [
+                        12,
+                        12,
+                        12,
+                        12
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                }
+            }
+        },
+        "change_point": {
+            "change_detected": false,
+            "change_point": null,
+            "all_change_points": []
+        },
+        "temporal": {
+            "state": "STABLE",
+            "persistence_score": 0,
+            "acceleration_score": 0,
+            "convergence_score": 0
+        },
+        "event": {
+            "event_detected": false,
+            "zone_id": "ZONE_B",
+            "event_start": null,
+            "temporal_state": "STABLE",
+            "timeline": [
+                {
+                    "snapshot_index": 0,
+                    "time_offset_minutes": 0,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 1,
+                    "time_offset_minutes": 5,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 2,
+                    "time_offset_minutes": 10,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 3,
+                    "time_offset_minutes": 15,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 4,
+                    "time_offset_minutes": 20,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                },
+                {
+                    "snapshot_index": 11,
+                    "time_offset_minutes": 55,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 40,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 12
+                    }
+                }
+            ],
+            "evidence": []
+        },
+        "recovery": {
+            "recovery_detected": false,
+            "signals_recovering": [],
+            "signals_count": 0,
+            "recovery_level": "NONE",
+            "reason": "No sufficient multi-signal recovery detected.",
+            "recovery_changes": {
+                "rainfall_mm": 0,
+                "traffic_percent": 0,
+                "transit_delay_minutes": 0,
+                "complaints_count": 0
+            }
+        },
+        "event_lifecycle": {
+            "lifecycle_stage": "NORMAL",
+            "event_active": false,
+            "recovery_active": false,
+            "reason": "No active civic disruption detected."
+        }
+    },
+    {
+        "zone_id": "ZONE_C",
+        "status": "NORMAL",
+        "risk_score": 0,
+        "anomaly": false,
+        "signals_detected": [],
+        "why_flagged": {
+            "reason": "No significant civic disruption detected.",
+            "evidence": [],
+            "time_window_minutes": 15,
+            "interpretation": "Current signals are within normal range."
+        },
+        "ml": {
+            "ml_anomaly": false,
+            "ml_score": 0.0553
+        },
+        "statistical": {
+            "rainfall": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "traffic": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "transit": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "complaints": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            }
+        },
+        "ensemble": {
+            "rule_anomaly": false,
+            "statistical_anomaly": false,
+            "ml_anomaly": false,
+            "detectors_agreeing": 0,
+            "ensemble_anomaly": false,
+            "confidence": "LOW"
+        },
+        "early_warning": {
+            "early_warning": false,
+            "signals_showing_change": [],
+            "signals_count": 0,
+            "warning_level": "NONE",
+            "reason": "No sufficient multi-signal deterioration detected.",
+            "trends": {
+                "rainfall_mm": {
+                    "recent_values": [
+                        3.0,
+                        3.0,
+                        3.0,
+                        3.0
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "traffic_percent": {
+                    "recent_values": [
+                        45,
+                        45,
+                        45,
+                        45
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "transit_delay_minutes": {
+                    "recent_values": [
+                        7,
+                        7,
+                        7,
+                        7
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "complaints_count": {
+                    "recent_values": [
+                        8,
+                        8,
+                        8,
+                        8
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                }
+            }
+        },
+        "change_point": {
+            "change_detected": false,
+            "change_point": null,
+            "all_change_points": []
+        },
+        "temporal": {
+            "state": "STABLE",
+            "persistence_score": 0,
+            "acceleration_score": 0,
+            "convergence_score": 0
+        },
+        "event": {
+            "event_detected": false,
+            "zone_id": "ZONE_C",
+            "event_start": null,
+            "temporal_state": "STABLE",
+            "timeline": [
+                {
+                    "snapshot_index": 0,
+                    "time_offset_minutes": 0,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 1,
+                    "time_offset_minutes": 5,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 2,
+                    "time_offset_minutes": 10,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 3,
+                    "time_offset_minutes": 15,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 4,
+                    "time_offset_minutes": 20,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                },
+                {
+                    "snapshot_index": 11,
+                    "time_offset_minutes": 55,
+                    "evidence": {
+                        "rainfall_mm": 3.0,
+                        "traffic_percent": 45,
+                        "transit_delay_minutes": 7,
+                        "complaints_count": 8
+                    }
+                }
+            ],
+            "evidence": []
+        },
+        "recovery": {
+            "recovery_detected": false,
+            "signals_recovering": [],
+            "signals_count": 0,
+            "recovery_level": "NONE",
+            "reason": "No sufficient multi-signal recovery detected.",
+            "recovery_changes": {
+                "rainfall_mm": 0,
+                "traffic_percent": 0,
+                "transit_delay_minutes": 0,
+                "complaints_count": 0
+            }
+        },
+        "event_lifecycle": {
+            "lifecycle_stage": "NORMAL",
+            "event_active": false,
+            "recovery_active": false,
+            "reason": "No active civic disruption detected."
+        }
+    },
+    {
+        "zone_id": "ZONE_D",
+        "status": "NORMAL",
+        "risk_score": 0,
+        "anomaly": false,
+        "signals_detected": [],
+        "why_flagged": {
+            "reason": "No significant civic disruption detected.",
+            "evidence": [],
+            "time_window_minutes": 15,
+            "interpretation": "Current signals are within normal range."
+        },
+        "ml": {
+            "ml_anomaly": false,
+            "ml_score": 0.0522
+        },
+        "statistical": {
+            "rainfall": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "traffic": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "transit": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "complaints": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            }
+        },
+        "ensemble": {
+            "rule_anomaly": false,
+            "statistical_anomaly": false,
+            "ml_anomaly": false,
+            "detectors_agreeing": 0,
+            "ensemble_anomaly": false,
+            "confidence": "LOW"
+        },
+        "early_warning": {
+            "early_warning": false,
+            "signals_showing_change": [],
+            "signals_count": 0,
+            "warning_level": "NONE",
+            "reason": "No sufficient multi-signal deterioration detected.",
+            "trends": {
+                "rainfall_mm": {
+                    "recent_values": [
+                        5.0,
+                        5.0,
+                        5.0,
+                        5.0
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "traffic_percent": {
+                    "recent_values": [
+                        50,
+                        50,
+                        50,
+                        50
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "transit_delay_minutes": {
+                    "recent_values": [
+                        5,
+                        5,
+                        5,
+                        5
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "complaints_count": {
+                    "recent_values": [
+                        10,
+                        10,
+                        10,
+                        10
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                }
+            }
+        },
+        "change_point": {
+            "change_detected": false,
+            "change_point": null,
+            "all_change_points": []
+        },
+        "temporal": {
+            "state": "PERSISTENT",
+            "persistence_score": 2,
+            "acceleration_score": 0,
+            "convergence_score": 2
+        },
+        "event": {
+            "event_detected": false,
+            "zone_id": "ZONE_D",
+            "event_start": null,
+            "temporal_state": "PERSISTENT",
+            "timeline": [
+                {
+                    "snapshot_index": 0,
+                    "time_offset_minutes": 0,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 1,
+                    "time_offset_minutes": 5,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 2,
+                    "time_offset_minutes": 10,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 3,
+                    "time_offset_minutes": 15,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 4,
+                    "time_offset_minutes": 20,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                },
+                {
+                    "snapshot_index": 11,
+                    "time_offset_minutes": 55,
+                    "evidence": {
+                        "rainfall_mm": 5.0,
+                        "traffic_percent": 50,
+                        "transit_delay_minutes": 5,
+                        "complaints_count": 10
+                    }
+                }
+            ],
+            "evidence": []
+        },
+        "recovery": {
+            "recovery_detected": false,
+            "signals_recovering": [],
+            "signals_count": 0,
+            "recovery_level": "NONE",
+            "reason": "No sufficient multi-signal recovery detected.",
+            "recovery_changes": {
+                "rainfall_mm": 0,
+                "traffic_percent": 0,
+                "transit_delay_minutes": 0,
+                "complaints_count": 0
+            }
+        },
+        "event_lifecycle": {
+            "lifecycle_stage": "NORMAL",
+            "event_active": false,
+            "recovery_active": false,
+            "reason": "No active civic disruption detected."
+        }
+    },
+    {
+        "zone_id": "ZONE_E",
+        "status": "NORMAL",
+        "risk_score": 0,
+        "anomaly": false,
+        "signals_detected": [],
+        "why_flagged": {
+            "reason": "No significant civic disruption detected.",
+            "evidence": [],
+            "time_window_minutes": 15,
+            "interpretation": "Current signals are within normal range."
+        },
+        "ml": {
+            "ml_anomaly": false,
+            "ml_score": 0.0948
+        },
+        "statistical": {
+            "rainfall": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "traffic": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "transit": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            },
+            "complaints": {
+                "z_score": 0,
+                "statistical_anomaly": false
+            }
+        },
+        "ensemble": {
+            "rule_anomaly": false,
+            "statistical_anomaly": false,
+            "ml_anomaly": false,
+            "detectors_agreeing": 0,
+            "ensemble_anomaly": false,
+            "confidence": "LOW"
+        },
+        "early_warning": {
+            "early_warning": false,
+            "signals_showing_change": [],
+            "signals_count": 0,
+            "warning_level": "NONE",
+            "reason": "No sufficient multi-signal deterioration detected.",
+            "trends": {
+                "rainfall_mm": {
+                    "recent_values": [
+                        4.0,
+                        4.0,
+                        4.0,
+                        4.0
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "traffic_percent": {
+                    "recent_values": [
+                        42,
+                        42,
+                        42,
+                        42
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "transit_delay_minutes": {
+                    "recent_values": [
+                        6,
+                        6,
+                        6,
+                        6
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                },
+                "complaints_count": {
+                    "recent_values": [
+                        9,
+                        9,
+                        9,
+                        9
+                    ],
+                    "recent_changes": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "average_change": 0.0
+                }
+            }
+        },
+        "change_point": {
+            "change_detected": false,
+            "change_point": null,
+            "all_change_points": []
+        },
+        "temporal": {
+            "state": "STABLE",
+            "persistence_score": 0,
+            "acceleration_score": 0,
+            "convergence_score": 0
+        },
+        "event": {
+            "event_detected": false,
+            "zone_id": "ZONE_E",
+            "event_start": null,
+            "temporal_state": "STABLE",
+            "timeline": [
+                {
+                    "snapshot_index": 0,
+                    "time_offset_minutes": 0,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 1,
+                    "time_offset_minutes": 5,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 2,
+                    "time_offset_minutes": 10,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 3,
+                    "time_offset_minutes": 15,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 4,
+                    "time_offset_minutes": 20,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 5,
+                    "time_offset_minutes": 25,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 6,
+                    "time_offset_minutes": 30,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 7,
+                    "time_offset_minutes": 35,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 8,
+                    "time_offset_minutes": 40,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 9,
+                    "time_offset_minutes": 45,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 10,
+                    "time_offset_minutes": 50,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                },
+                {
+                    "snapshot_index": 11,
+                    "time_offset_minutes": 55,
+                    "evidence": {
+                        "rainfall_mm": 4.0,
+                        "traffic_percent": 42,
+                        "transit_delay_minutes": 6,
+                        "complaints_count": 9
+                    }
+                }
+            ],
+            "evidence": []
+        },
+        "recovery": {
+            "recovery_detected": false,
+            "signals_recovering": [],
+            "signals_count": 0,
+            "recovery_level": "NONE",
+            "reason": "No sufficient multi-signal recovery detected.",
+            "recovery_changes": {
+                "rainfall_mm": 0,
+                "traffic_percent": 0,
+                "transit_delay_minutes": 0,
+                "complaints_count": 0
+            }
+        },
+        "event_lifecycle": {
+            "lifecycle_stage": "NORMAL",
+            "event_active": false,
+            "recovery_active": false,
+            "reason": "No active civic disruption detected."
+        }
+    }
+]
